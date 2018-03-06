@@ -87,7 +87,7 @@ def Add_Info_Show():
         return Add_Show(T_G, Desc, Overwrite=False)
     elif T_G[2] in Dict_List[T_G[0]][T_G[1]].keys():
         Overwrite = input(
-        "Show allready exist. Do You wanna overwrite? Y or N"
+            "Show allready exist. Do You wanna overwrite? Y or N"
         )
         if Overwrite == "Y":
             return Add_Show(T_G, Desc, Overwrite=True)
@@ -104,12 +104,12 @@ def Add_Show(T_G, Desc, Overwrite=False):
     global Dict_List, Changed
     Dict_List.setdefault(T_G[0], {})
     Dict_List[T_G[0]].setdefault(T_G[1], {})
-    if Overwrite == True:
+    if Overwrite is True:
         Dict_List[T_G[0]][T_G[1]].update({T_G[2]: Desc})
         Changed = True
         print("Overwrite Successful")
         return Dict_List
-    if Overwrite == False:
+    if Overwrite is False:
         Changed = True
         Dict_List[T_G[0]][T_G[1]].setdefault(T_G[2], Desc)
         return Dict_List
@@ -117,8 +117,8 @@ def Add_Show(T_G, Desc, Overwrite=False):
 
 def remove_show():
     """This function purpose is to remove show.
-     This function made incase the user don't want a show on the list anymore or
-     if he typed the name wrong"""
+    This function made incase the user don't want a show on
+     the list anymore or if he typed the name wrong."""
     global Dict_List, Changed
     delete_Show = input("write it like this (Type, Genre, name)").split(", ")
     if len(delete_Show) != 3:
@@ -130,13 +130,14 @@ def remove_show():
 
 
 def Save_file():
-    """Save_File function purpose is to save everything done into txt inside of
-    a map. Normaly it would get error if the file or map dosn't exsist
-    But coded it so it will automaticly create the map and the file if they
-    don't exsist in the same map as the program file"""
+    """Save_File function purpose is to save everything done into the txt Dict_file
+     inside of
+     a map. Normaly it would get error if the file or map dosn't exsist
+     But coded it so it will automaticly create the map and the file if they
+     don't exsist in the same map as the program file"""
     global Changed
     extra_safety = input(
-    "You sure you wanna overwrite old data? Y or N: "
+        "You sure you wanna overwrite old data? Y or N: "
     )
     if extra_safety == "Y":
         if "Pheonix_Save_File" not in os.listdir():
@@ -153,9 +154,9 @@ def Quit(action):
     """The function end the program turning it of.
     But made a safety measure incase somebody forgot to save that it will give
     them a warning before it quit letting them save it if they want to."""
-    if Changed == False:
+    if Changed is False:
         return action
-    if Changed == True:
+    if Changed is True:
         print("You havn't saved recent List.")
         You_sure = input("You sure you wanna Quit?: Y or N ")
         if You_sure == "Y":
@@ -167,5 +168,6 @@ def Quit(action):
 Argument_AC = ""
 while Argument_AC != "Quit":
     print(Dict_List.keys())
-    Action = input("Option: View Show, View Genre, Add, Remove, Save, or Quit:")
+    Action = input(
+        "Option: View Show, View Genre, Add, Remove, Save, or Quit:")
     Argument_AC = Action_Choice(Action)
