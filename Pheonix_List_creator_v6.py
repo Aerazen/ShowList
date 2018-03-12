@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 import json
 import os
+
 """ You can see that"""
-if "Pheonix_Save_File" in os.listdir():
+if "Pheonix_Save_File" in os.listdir('.'):
     Dict_file = open("Pheonix_Save_File/PheonixList.txt", "r")
     Dict_List = json.load(Dict_file)
 else:
     Dict_List = {}
 
 Changed = False
+
 
 
 def Action_Choice(action):
@@ -47,8 +49,8 @@ def view_Shows():
             for a in Dict_List[view[0]]:
                 for b in Dict_List[view[0]][view[1]]:
                     print(b)
-            view_desc = input(
-                "To view desc write the show name else type back:")
+            view_input = "To view desc write the show name else type back: "
+            view_desc = input(view_input)
             if view_desc == "Back":
                 return "Back"
             else:
@@ -86,9 +88,8 @@ def Add_Info_Show():
     elif T_G[1] not in Dict_List[T_G[0]].keys():
         return Add_Show(T_G, Desc, Overwrite=False)
     elif T_G[2] in Dict_List[T_G[0]][T_G[1]].keys():
-        Overwrite = input(
-            "Show allready exist. Do You wanna overwrite? Y or N"
-        )
+        Overwrite_input = "Show allready exist. Do You wanna overwrite? Y or N "
+        Overwrite = input(Overwrite_input)
         if Overwrite == "Y":
             return Add_Show(T_G, Desc, Overwrite=True)
         if Overwrite == "N":
@@ -130,15 +131,14 @@ def remove_show():
 
 
 def Save_file():
-    """Save_File function purpose is to save everything done into the txt Dict_file
-     inside of
+    """Save_File function purpose is to save everything done
+     into the txt Dict_file, inside of
      a map. Normaly it would get error if the file or map dosn't exsist
      But coded it so it will automaticly create the map and the file if they
      don't exsist in the same map as the program file"""
     global Changed
-    extra_safety = input(
-        "You sure you wanna overwrite old data? Y or N: "
-    )
+    the_info = "You sure you wanna overwrite old data? Y or N: "
+    extra_safety = input("the_info)
     if extra_safety == "Y":
         if "Pheonix_Save_File" not in os.listdir():
             os.mkdir("Pheonix_Save_File")
@@ -168,6 +168,6 @@ def Quit(action):
 Argument_AC = ""
 while Argument_AC != "Quit":
     print(Dict_List.keys())
-    Action = input(
-        "Option: View Show, View Genre, Add, Remove, Save, or Quit:")
+    Action_input = "Option: View Show, View Genre, Add, Remove, Save, or Quit "
+    Action = input(Action_input)
     Argument_AC = Action_Choice(Action)
