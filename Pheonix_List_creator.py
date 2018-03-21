@@ -38,7 +38,6 @@ def Action_Choice(action):
 
 
 def view_Show():
-0:02 / 0:07
 
     """
     Here is the View Show. This function contain everything to see name of the
