@@ -38,7 +38,6 @@ def Action_Choice(action):
 
 
 def view_Show():
-0:02 / 0:07
 
     """
     Here is the View Show. This function contain everything to see name of the
@@ -48,14 +47,14 @@ def view_Show():
         print("")
     for t in Dict_List:
         print(t)
-    view_t = input("Write in Type")
+    view_t = input("Write in Type: ")
     if view_t not in Dict_List.keys():
         print("The type you wrote in dosn't exist.")
     else:
         for a in Dict_List:
             for g in Dict_List[view_t]:
                 print(g)
-        view_g = input("write in the genre:")
+        view_g = input("write in the genre: ")
         if view_g not in Dict_List[view_t].keys():
             print("No Genre with that name exsist")
         else:
@@ -95,7 +94,7 @@ def Add_Info_Show():
         print("")
         print("Write in info or what you think about the show")
         print("")
-    Desc = input("Write in a description? ")
+    Desc = input("Write in a description: ")
     if T_G[0] not in Dict_List.keys():
         return Add_Show(T_G, Desc, Overwrite=False)
     elif T_G[1] not in Dict_List[T_G[0]].keys():
@@ -153,7 +152,7 @@ def remove_Show():
         print("")
         print("Example: Movie, Comedy, Hangover")
         print("")
-    D_S_Text = "Write it like this (Type, Genre, Name) "
+    D_S_Text = "Write (Type, Genre, Name): "
     d_Show = input(D_S_Text).split(", ")
     if len(d_Show) != 3:
         print("Write in correctly")
@@ -179,7 +178,7 @@ def remove_Genre():
         print("")
         print("Example: Anime, Drama")
         print("")
-    d_Genre = input("write it like this (Type, Genre) ").split(", ")
+    d_Genre = input("write (Type, Genre): ").split(", ")
     if len(d_Genre) != 2:
         print("The Genre dosn't exist")
     elif d_Genre[0] in Dict_List.keys():
@@ -202,7 +201,7 @@ def remove_Type():
         print("")
     for a in Dict_List:
         print(a)
-    d_Type = input("write in the type you wanna delete ")
+    d_Type = input("write in the type you wanna delete: ")
     if d_Type in Dict_List.keys():
         Changed = True
         Dict_List.pop(d_Type)
@@ -241,7 +240,7 @@ def Quit(action):
         return action
     if Changed is True:
         print("You havn't saved recent List.")
-        You_sure = input("Wanna contiune to quit?: Y or N ")
+        You_sure = input("Wanna contiune to quit? Y or N: ")
         if You_sure == "Y":
             return action
         if You_sure == "N":
@@ -292,5 +291,5 @@ while Argument_AC != "Quit":
     elif Help_TF is True:
         Help_status = "(ON)"
     Action_input2 = "Add, Save, Quit, Info or Help " + Help_status
-    Action = input("Option: " + Action_input + Action_input2)
+    Action = input("Option: " + Action_input + Action_input2 + " ")
     Argument_AC = Action_Choice(Action)
