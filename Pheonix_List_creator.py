@@ -24,9 +24,14 @@ def Action_Choice(action):
     if action == "Add":
         return Add_Info_Show()
     elif action == "Remove":
+        if Dict_List == {}:
+            print("Remove disabled. Add a show to Activate Remove")
         return remove()
     elif action == "View":
-        return view_Show()
+        if Dict_List == {}:
+            print("View disabled. Add a show to activate View.")
+        else:
+            return view_Show()
     elif action == "Quit":
         return Quit(action)
     elif action == "Save":
@@ -291,5 +296,5 @@ while Argument_AC != "Quit":
     elif Help_TF is True:
         Help_status = "(ON)"
     Action_input2 = "Add, Save, Quit, Info or Help " + Help_status
-    Action = input("Option: " + Action_input + Action_input2 + " ")
+    Action = input("Option: " + Action_input + Action_input2 + ": ")
     Argument_AC = Action_Choice(Action)
